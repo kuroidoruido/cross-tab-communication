@@ -1,0 +1,69 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  position: relative;
+  min-width: 0;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* GLOBAL */
+body {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* THEME CONFIGURATOR */
+#theme-configurator textarea {
+  min-width: 20rem;
+  min-height: 10rem;
+}
+
+/* THEME PREVIEW */
+#theme-preview {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .container {
+    border: 2px solid var(--theme--color--border, gray);
+    border-top-width: 2rem;
+    border-radius: 1rem;
+    padding: 0 1rem;
+    background-color: var(--theme--color--background, white);
+    position: relative;
+
+    p {
+      background-color: var(--theme--color--foreground, transparent);
+      color: var(--theme--color--text, black);
+    }
+
+    &::before {
+      content: '⚬⚬⚬';
+      display: block;
+      width: fit-content;
+      position: absolute;
+      top: -2rem;
+      right: 1rem;
+      font-size: 200%;
+      letter-spacing: -0.25em;
+      line-height: 100%;
+      color: white;
+    }
+  }
+}
