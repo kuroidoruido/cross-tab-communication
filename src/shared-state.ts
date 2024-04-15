@@ -41,6 +41,7 @@ export class SharedState<T extends State<T>> {
     window.addEventListener('storage', this.onStorageEvent.bind(this));
     window.addEventListener('same-tab-storage', this.onStorageEvent.bind(this));
     setInterval(() => {
+      // only for storage edition from devtools
       const oldState = JSON.stringify(this.state);
       const newState = localStorage.getItem(this.stateName);
       if (oldState !== newState) {
@@ -48,7 +49,7 @@ export class SharedState<T extends State<T>> {
           new SameTabStorageEvent(this.stateName, oldState, newState)
         );
       }
-    }, 1_000);
+    }, 3_000);
   }
 
   getState(): T | undefined {

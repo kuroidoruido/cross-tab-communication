@@ -24,5 +24,6 @@ export function displayThemeConfigurator() {
   themeState.subscribe(({ data }) => {
     const textarea = document.querySelector('#theme-configurator textarea')!;
     textarea.textContent = JSON.stringify(data, undefined, 2);
+    textarea.value = JSON.stringify(data, undefined, 2);
   })
 }
