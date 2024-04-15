@@ -1,5 +1,5 @@
 export type State<T> = Readonly<T>;
-export type SharedStateListener<T> = (newState: State<T>) => void;
+export type SharedStateListener<T> = (event: { data: State<T> }) => void;
 
 export class SharedState<T extends State<T>> {
   private state: T | undefined;
@@ -77,7 +77,7 @@ export class SharedState<T extends State<T>> {
     const newValue = JSON.stringify(newState);
     if (oldValue !== newValue) {
       this.state = newState;
-      this.listeners.forEach((listener) => listener(newState));
+      this.listeners.forEach((listener) => listener({ data: newState }));
       window.dispatchEvent(
         new SameTabStorageEvent(this.stateName, oldValue, newValue)
       );
